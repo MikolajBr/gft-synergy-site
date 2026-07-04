@@ -2,19 +2,24 @@
 (function () {
   'use strict';
 
-  /* ---------- mobile nav ---------- */
+  /* ---------- mobile nav (pełny ekran) ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('mainnav');
   if (toggle && nav) {
-    toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
+    var setNavState = function (open) {
+      nav.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open);
+      toggle.textContent = open ? '✕' : '☰';
+      document.body.classList.toggle('nav-locked', open);
+    };
+    toggle.addEventListener('click', function () {
+      setNavState(!nav.classList.contains('open'));
     });
     nav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
+      if (e.target.tagName === 'A') { setNavState(false); }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 960) { setNavState(false); }
     });
   }
 
