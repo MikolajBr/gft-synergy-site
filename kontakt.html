@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt | GFT SYNERGY</title>
+<meta name="description" content="Skontaktuj się z GFT Synergy: pytania o produkty, zamówienia, szkolenia, sprzęt na zamówienie i współpracę.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <span class="micro micro--dim">Szyte lokalnie · Projektowane pod praktyczne użycie</span>
+    <span class="micro micro--dim">Opatentowany system Octamolle</span>
+    <span class="micro micro--dim">Featured in MILMAG</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="GFT Synergy — strona główna">
+      <img src="img/logo-light.png" alt="GFT — Esse Quam Videri" width="800" height="202">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
+    <nav class="main" id="mainnav">
+      <a href="sklep.html">Sklep</a>
+      <a href="octamolle.html">Octamolle</a>
+      <a href="szkolenia.html">Szkolenia</a>
+      <a href="o-firmie.html">O firmie</a>
+      <a href="kontakt.html" aria-current="page">Kontakt</a>
+    </nav>
+    <div class="head-actions">
+      <a class="icon-btn" href="wyszukiwanie.html" aria-label="Szukaj">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 L18 18"/></svg>
+      </a>
+      <a class="icon-btn" href="moje-konto.html" aria-label="Moje konto">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="6.5" r="3.5"/><path d="M3 18 C3 13.5 17 13.5 17 18"/></svg>
+      </a>
+      <a class="icon-btn" href="koszyk.html" aria-label="Koszyk">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6 H16 L15 17 H5 Z"/><path d="M7 6 C7 2 13 2 13 6"/></svg>
+        <span class="cart-count"></span>
+      </a>
+      <a class="btn btn--solid btn--sm" href="sklep.html">Zobacz produkty</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero oct-pattern">
+  <div class="wrap">
+    <p class="eyebrow micro">Kontakt</p>
+    <h1>Kontakt</h1>
+    <p class="lede">Pytanie o produkt, zamówienie, szkolenie albo sprzęt na zamówienie — wybierz temat, a trafisz do właściwej osoby.</p>
+  </div>
+</section>
+
+<section class="sec-pad">
+  <div class="wrap grid12">
+    <div style="grid-column: span 7;">
+      <form class="panel" action="#" method="post">
+        <div class="form-grid">
+          <div class="field"><label for="k-imie">Imię i nazwisko</label><input type="text" id="k-imie" name="imie" required></div>
+          <div class="field"><label for="k-email">E-mail</label><input type="email" id="k-email" name="email" required></div>
+          <div class="field full"><label for="k-temat">Temat</label>
+            <select id="k-temat" name="temat">
+              <option>Pytanie o produkt</option>
+              <option>Pytanie o zamówienie</option>
+              <option>Pytanie o szkolenie</option>
+              <option>Pytanie o sprzęt na zamówienie</option>
+              <option>Współpraca / dystrybucja</option>
+            </select>
+          </div>
+          <div class="field full"><label for="k-nr">Numer zamówienia (opcjonalnie)</label><input type="text" id="k-nr" name="nr"></div>
+          <div class="field full"><label for="k-msg">Wiadomość</label><textarea id="k-msg" name="wiadomosc" required></textarea></div>
+          <label class="check full"><input type="checkbox" required> Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Szczegóły w <a href="polityka-prywatnosci.html" style="color:var(--muted);">polityce prywatności</a>.</label>
+          <div class="full"><button class="btn btn--solid" type="submit">Wyślij wiadomość <span class="arrow">→</span></button></div>
+        </div>
+      </form>
+    </div>
+    <div style="grid-column: 9 / 13;">
+      <p class="eyebrow micro">Dane kontaktowe</p>
+      <dl class="spec-rows">
+        <div><dt>Sklep</dt><dd>kontakt@gftsynergy.pl</dd></div>
+        <div><dt>Szkolenia</dt><dd>szkolenia@gftsynergy.pl</dd></div>
+        <div><dt>Na zamówienie</dt><dd>custom@gftsynergy.pl</dd></div>
+        <div><dt>Odpowiedź</dt><dd>do 3 dni roboczych</dd></div>
+        <div><dt>Social</dt><dd><a href="#" style="color:var(--text);">Instagram</a> · <a href="#" style="color:var(--text);">Facebook</a> · <a href="#" style="color:var(--text);">YouTube</a></dd></div>
+      </dl>
+      <div class="panel" style="margin-top:2rem;">
+        <p class="eyebrow micro">Sprzęt na zamówienie</p>
+        <p style="font-size:0.88rem; color:var(--muted);">GFT Synergy może pomóc w dobraniu lub sprowadzeniu wybranego wyposażenia. Oferta dystrybucyjna będzie rozwijana etapami — opisz zapotrzebowanie, odpowiemy z propozycją.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="index.html" aria-label="GFT Synergy — strona główna">
+      <img src="img/logo-light.png" alt="GFT — Esse Quam Videri" width="800" height="202">
+    </a>
+        <p class="foot-motto">Esse Quam Videri — być, a nie tylko wyglądać</p>
+        <p style="font-size:0.84rem; color:var(--muted); margin-top:0.9rem; max-width:34ch;">Sprzęt szyty lokalnie dla ludzi, którzy naprawdę go używają.</p>
+      </div>
+      <div>
+        <span class="micro micro--dim">Sklep</span>
+        <ul>
+          <li><a href="kategoria-pasy.html">Pasy</a></li>
+          <li><a href="sklep.html#ladownice">Ładownice</a></li>
+          <li><a href="sklep.html#inne">Akcesoria</a></li>
+          <li><a href="warbelt-alpha.html">Warbelt Alpha</a></li>
+          <li><a href="koszyk.html">Koszyk</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="micro micro--dim">Marka</span>
+        <ul>
+          <li><a href="octamolle.html">System Octamolle</a></li>
+          <li><a href="o-firmie.html">O firmie</a></li>
+          <li><a href="szkolenia.html">Szkolenia</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="https://milmag.pl/warbelt-alpha-pas-strzelecki-od-gft-synergy/" target="_blank" rel="noopener">MILMAG o Warbelt Alpha ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="micro micro--dim">Informacje</span>
+        <ul>
+          <li><a href="regulamin.html">Regulamin sklepu</a></li>
+          <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+          <li><a href="zwroty.html">Zwroty i wymiany</a></li>
+          <li><a href="moje-konto.html">Moje konto</a></li>
+          <li><a href="#" rel="noopener">Instagram</a> · <a href="#" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GFT Synergy. Wszystkie prawa zastrzeżone.</span>
+      <span>Produkcja: Polska · Octamolle™ — system opatentowany</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab: animacje przycisków (Elementor) | GFT SYNERGY</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/shop.css">
+<style>
+/* ===== LAB: animacje przycisków pod Elementor =====
+   Zasady: tylko transform / color / opacity / clip-path,
+   zero dodatkowego HTML — wszystko na ::before / ::after,
+   więc działa na .elementor-button bez zmian w markupie. */
+
+.lab-row {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr;
+  gap: 2.5rem;
+  padding-block: 2.8rem;
+  border-top: 1px solid var(--line-soft);
+  align-items: start;
+}
+.lab-row:first-of-type { border-top: none; }
+.lab-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  align-items: flex-start;
+  position: sticky;
+  top: 100px;
+}
+.lab-demo .on-light {
+  background: var(--light-0);
+  padding: 1.4rem;
+  width: 100%;
+  display: flex;
+}
+.lab-code { min-width: 0; }
+.lab-code pre {
+  background: var(--bg-1);
+  border: 1px solid var(--line-soft);
+  padding: 1.3rem 1.4rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.65;
+  color: #b8b3ae;
+  tab-size: 2;
+}
+.lab-code pre .c { color: var(--graphite); }
+.copy-btn {
+  margin-top: 0.7rem;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+.copy-btn:hover { color: var(--coyote); border-color: var(--coyote-dim); }
+@media (max-width: 960px) {
+  .lab-row { grid-template-columns: 1fr; }
+  .lab-demo { position: static; }
+}
+
+/* wspólna baza demo przycisków (odpowiednik ustawień w Elementorze) */
+.ebtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  padding: 1rem 1.7rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text);
+}
+
+/* ---------- 01 SWEEP ---------- */
+.gft-sweep {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #c0aa9a;
+  color: #c0aa9a;
+  background: transparent;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  transition: color 0.25s ease;
+}
+.gft-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #c0aa9a;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gft-sweep > * { position: relative; z-index: 1; }
+.gft-sweep:hover, .gft-sweep.is-hover { color: #17130f; }
+.gft-sweep:hover::before, .gft-sweep.is-hover::before { transform: scaleX(1); }
+.gft-sweep:active { transform: translateY(1px); }
+
+/* ---------- 02 NAROŻNIKI ---------- */
+.gft-corners {
+  position: relative;
+  color: var(--text);
+  background: rgba(103, 101, 104, 0.1);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.gft-corners::before,
+.gft-corners::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #c0aa9a;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.gft-corners::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.gft-corners::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.gft-corners:hover, .gft-corners.is-hover { background: rgba(192, 170, 154, 0.08); color: #d8c3b2; }
+.gft-corners:hover::before, .gft-corners.is-hover::before,
+.gft-corners:hover::after, .gft-corners.is-hover::after {
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+}
+.gft-corners:active { transform: translateY(1px); }
+
+/* ---------- 03 STRZAŁKA ---------- */
+.gft-arrow {
+  background: #c0aa9a;
+  color: #17130f;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  transition: background-color 0.25s ease, letter-spacing 0.25s ease;
+}
+.gft-arrow .ico {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: Inter, sans-serif;
+}
+.gft-arrow:hover, .gft-arrow.is-hover { background: #d8c3b2; letter-spacing: 0.2em; }
+.gft-arrow:hover .ico, .gft-arrow.is-hover .ico { transform: translateX(6px); }
+.gft-arrow:active { transform: translateY(1px); }
+
+/* ---------- 04 ZNACZNIK OKTAGON ---------- */
+.gft-octa {
+  position: relative;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: transparent;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+.gft-octa::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background: transparent;
+  border: 1.5px solid #c0aa9a;
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease;
+}
+.gft-octa:hover, .gft-octa.is-hover { border-color: #c0aa9a; color: #d8c3b2; }
+.gft-octa:hover::before, .gft-octa.is-hover::before {
+  transform: rotate(112.5deg);
+  background: #c0aa9a;
+}
+.gft-octa:active { transform: translateY(1px); }
+
+/* ---------- 05 LINIA SKANUJĄCA ---------- */
+.gft-scan {
+  position: relative;
+  color: var(--muted);
+  padding-inline: 0.4rem;
+  transition: color 0.25s ease;
+}
+.gft-scan::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 0;
+  height: 1px;
+  background: #c0aa9a;
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gft-scan:hover, .gft-scan.is-hover { color: #c0aa9a; }
+.gft-scan:hover::after, .gft-scan.is-hover::after { width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gft-sweep, .gft-sweep::before, .gft-corners, .gft-corners::before, .gft-corners::after,
+  .gft-arrow, .gft-arrow .ico, .gft-octa, .gft-octa::before, .gft-scan, .gft-scan::after {
+    transition: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="GFT Synergy — strona główna">
+      <img src="img/logo-light.png" alt="GFT — Esse Quam Videri" width="800" height="202">
+    </a>
+    <span class="micro micro--dim">Lab / animacje przycisków — strona robocza</span>
+    <a class="btn btn--ghost btn--sm" href="index.html">← Wróć na stronę</a>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero oct-pattern">
+  <div class="wrap">
+    <p class="eyebrow micro">Style guide / Elementor</p>
+    <h1>Animacje przycisków</h1>
+    <p class="lede">Pięć hoverów spójnych z identyfikacją GFT. Wszystko czysty CSS na pseudo-elementach — bez dodatkowego HTML, więc każdy wariant wkleisz w Elementorze przez <strong style="color:var(--text);">Advanced → Custom CSS</strong> (Pro). Przycisk „Podgląd hover" wymusza stan bez najeżdżania myszką.</p>
+    <div style="margin-top:1.6rem;">
+      <button class="btn btn--solid btn--sm" id="hoverToggle" type="button">Podgląd hover: wył.</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec-pad" style="padding-top:1rem;">
+  <div class="wrap">
+
+    <!-- 01 -->
+    <div class="lab-row">
+      <div class="lab-demo">
+        <div>
+          <p class="eyebrow micro">01 / Sweep</p>
+          <h2 class="h-md">Wypełnienie od lewej</h2>
+          <p style="color:var(--muted); font-size:0.9rem; margin-top:0.6rem;">Główne CTA. Obrys coyote, po najechaniu tło „wjeżdża" od lewej, tekst zmienia kolor na grafit. Ścięte narożniki nawiązują do oktagonu.</p>
+        </div>
+        <a class="ebtn gft-sweep" href="#"><span>Zobacz produkty</span></a>
+      </div>
+      <div class="lab-code">
+        <pre><code>selector .elementor-button {
+  position: relative; overflow: hidden;
+  background: transparent;
+  border: 1px solid #c0aa9a; color: #c0aa9a;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px,
+    100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 10px);
+  transition: color .25s ease;
+}
+selector .elementor-button::before {
+  content: ""; position: absolute; inset: 0;
+  background: #c0aa9a;
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform .32s cubic-bezier(.4,0,.2,1);
+}
+selector .elementor-button-content-wrapper {
+  position: relative; z-index: 1;
+}
+selector .elementor-button:hover { color: #17130f; }
+selector .elementor-button:hover::before { transform: scaleX(1); }
+selector .elementor-button:active { transform: translateY(1px); }</code></pre>
+        <button class="copy-btn" type="button">Kopiuj CSS</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="lab-row">
+      <div class="lab-demo">
+        <div>
+          <p class="eyebrow micro">02 / Narożniki</p>
+          <h2 class="h-md">Obrys rysowany z narożników</h2>
+          <p style="color:var(--muted); font-size:0.9rem; margin-top:0.6rem;">Przycisk drugorzędny. Dwa techniczne narożniki (jak znaczniki celownicze) rozrastają się w pełną ramkę. Dyskretny, bardzo „instruktorski".</p>
+        </div>
+        <a class="ebtn gft-corners" href="#"><span>Poznaj Octamolle</span></a>
+      </div>
+      <div class="lab-code">
+        <pre><code>selector .elementor-button {
+  position: relative;
+  background: rgba(103,101,104,.1); color: #ece8e4;
+  transition: background-color .25s ease, color .25s ease;
+}
+selector .elementor-button::before,
+selector .elementor-button::after {
+  content: ""; position: absolute;
+  width: 14px; height: 14px;
+  border: 1.5px solid #c0aa9a; pointer-events: none;
+  transition: width .3s cubic-bezier(.4,0,.2,1),
+              height .3s cubic-bezier(.4,0,.2,1);
+}
+selector .elementor-button::before {
+  top: -1px; left: -1px;
+  border-right: none; border-bottom: none;
+}
+selector .elementor-button::after {
+  bottom: -1px; right: -1px;
+  border-left: none; border-top: none;
+}
+selector .elementor-button:hover {
+  background: rgba(192,170,154,.08); color: #d8c3b2;
+}
+selector .elementor-button:hover::before,
+selector .elementor-button:hover::after {
+  width: calc(100% + 2px); height: calc(100% + 2px);
+}</code></pre>
+        <button class="copy-btn" type="button">Kopiuj CSS</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="lab-row">
+      <div class="lab-demo">
+        <div>
+          <p class="eyebrow micro">03 / Strzałka</p>
+          <h2 class="h-md">Strzałka + rozstrzelenie liter</h2>
+          <p style="color:var(--muted); font-size:0.9rem; margin-top:0.6rem;">Wariant pełny (solid coyote). Na hover ikona odjeżdża w prawo, a litery lekko się rozsuwają — subtelny ruch „do przodu". W Elementorze dodaj ikonę strzałki po prawej stronie tekstu.</p>
+        </div>
+        <a class="ebtn gft-arrow" href="#"><span>Dodaj do koszyka</span><span class="ico">→</span></a>
+      </div>
+      <div class="lab-code">
+        <pre><code>selector .elementor-button {
+  background: #c0aa9a; color: #17130f;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px,
+    100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 10px);
+  transition: background-color .25s ease, letter-spacing .25s ease;
+}
+selector .elementor-button-icon {
+  transition: transform .28s cubic-bezier(.4,0,.2,1);
+}
+selector .elementor-button:hover {
+  background: #d8c3b2; letter-spacing: .2em;
+}
+selector .elementor-button:hover .elementor-button-icon {
+  transform: translateX(6px);
+}
+selector .elementor-button:active { transform: translateY(1px); }</code></pre>
+        <button class="copy-btn" type="button">Kopiuj CSS</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="lab-row">
+      <div class="lab-demo">
+        <div>
+          <p class="eyebrow micro">04 / Znacznik</p>
+          <h2 class="h-md">Oktagon, który się domyka</h2>
+          <p style="color:var(--muted); font-size:0.9rem; margin-top:0.6rem;">Najbardziej brandowy wariant: mały konturowy oktagon przed tekstem obraca się o 112,5° i wypełnia kolorem — jak wskaźnik „system uzbrojony". Dobry do CTA sekcji Octamolle.</p>
+        </div>
+        <a class="ebtn gft-octa" href="#"><span>Jak działa system</span></a>
+      </div>
+      <div class="lab-code">
+        <pre><code>selector .elementor-button {
+  position: relative;
+  border: 1px solid rgba(103,101,104,.38);
+  background: transparent; color: #ece8e4;
+  transition: border-color .25s ease, color .25s ease;
+}
+selector .elementor-button-content-wrapper::before {
+  content: ""; display: inline-block;
+  width: 9px; height: 9px; margin-right: 10px;
+  border: 1.5px solid #c0aa9a;
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%,
+    70% 100%, 30% 100%, 0 70%, 0 30%);
+  transition: transform .35s cubic-bezier(.4,0,.2,1),
+              background-color .25s ease;
+}
+selector .elementor-button:hover {
+  border-color: #c0aa9a; color: #d8c3b2;
+}
+selector .elementor-button:hover
+  .elementor-button-content-wrapper::before {
+  transform: rotate(112.5deg); background: #c0aa9a;
+}</code></pre>
+        <button class="copy-btn" type="button">Kopiuj CSS</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="lab-row">
+      <div class="lab-demo">
+        <div>
+          <p class="eyebrow micro">05 / Skan</p>
+          <h2 class="h-md">Linia skanująca (tekstowy)</h2>
+          <p style="color:var(--muted); font-size:0.9rem; margin-top:0.6rem;">Do linków „trzeciego rzędu" (menu, karty produktów, „Zobacz więcej"). Cienka linia coyote rośnie od środka pod tekstem.</p>
+        </div>
+        <a class="ebtn gft-scan" href="#"><span>Przeglądaj ładownice</span></a>
+      </div>
+      <div class="lab-code">
+        <pre><code>selector .elementor-button {
+  position: relative;
+  background: none; border: none; color: #a29da0;
+  transition: color .25s ease;
+}
+selector .elementor-button::after {
+  content: ""; position: absolute;
+  left: 50%; bottom: 6px;
+  width: 0; height: 1px; background: #c0aa9a;
+  transform: translateX(-50%);
+  transition: width .3s cubic-bezier(.4,0,.2,1);
+}
+selector .elementor-button:hover { color: #c0aa9a; }
+selector .elementor-button:hover::after { width: 100%; }</code></pre>
+        <button class="copy-btn" type="button">Kopiuj CSS</button>
+      </div>
+    </div>
+
+    <!-- INSTRUKCJA -->
+    <div class="panel" style="margin-top:3rem;">
+      <p class="eyebrow micro">Jak wkleić w Elementorze</p>
+      <dl class="spec-rows">
+        <div><dt>Elementor Pro</dt><dd>Zaznacz widżet Przycisk → <strong>Advanced → Custom CSS</strong> → wklej snippet bez zmian. Słowo <code style="font-family:var(--font-mono); color:var(--coyote);">selector</code> Elementor sam podmienia na klasę tego konkretnego widżetu.</dd></div>
+        <div><dt>Elementor Free</dt><dd>Nadaj przyciskowi klasę w <strong>Advanced → CSS Classes</strong> (np. <code style="font-family:var(--font-mono); color:var(--coyote);">gft-sweep</code>), a snippet wklej w <strong>Wygląd → Dostosuj → Dodatkowy CSS</strong>, zamieniając każde <code style="font-family:var(--font-mono); color:var(--coyote);">selector</code> na <code style="font-family:var(--font-mono); color:var(--coyote);">.gft-sweep .elementor-button</code>.</dd></div>
+        <div><dt>Typografia przycisku</dt><dd>Ustaw w panelu Elementora: font <strong>IBM Plex Mono</strong>, wielkie litery, letter-spacing ~1.5–2 px, padding ~16/28 px — wtedy wygląd zejdzie się 1:1 z tą stroną.</dd></div>
+        <div><dt>Reduced motion</dt><dd>Dla dostępności dołóż raz, globalnie: <code style="font-family:var(--font-mono); color:var(--coyote);">@media (prefers-reduced-motion: reduce) { .elementor-button, .elementor-button::before, .elementor-button::after { transition: none !important; } }</code></dd></div>
+      </dl>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<script>
+  // przełącznik podglądu hoverów
+  var toggle = document.getElementById('hoverToggle');
+  var on = false;
+  toggle.addEventListener('click', function () {
+    on = !on;
+    document.querySelectorAll('.ebtn').forEach(function (b) { b.classList.toggle('is-hover', on); });
+    toggle.textContent = 'Podgląd hover: ' + (on ? 'wł.' : 'wył.');
+  });
+  // kopiowanie snippetów
+  document.querySelectorAll('.copy-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var code = b.parentElement.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(function () {
+        var t = b.textContent;
+        b.textContent = 'Skopiowano ✓';
+        setTimeout(function () { b.textContent = t; }, 1400);
+      });
+    });
+  });
+  // demo linki nie nawigują
+  document.querySelectorAll('.ebtn').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); });
+  });
+</script>
+
+</body>
+</html>

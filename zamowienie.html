@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zamówienie — dane i dostawa | GFT SYNERGY</title>
+<meta name="description" content="Finalizacja zakupu w sklepie GFT Synergy: dane, dostawa, płatność.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <span class="micro micro--dim">Szyte lokalnie · Projektowane pod praktyczne użycie</span>
+    <span class="micro micro--dim">Opatentowany system Octamolle</span>
+    <span class="micro micro--dim">Featured in MILMAG</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="GFT Synergy — strona główna">
+      <img src="img/logo-light.png" alt="GFT — Esse Quam Videri" width="800" height="202">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
+    <nav class="main" id="mainnav">
+      <a href="sklep.html" aria-current="page">Sklep</a>
+      <a href="octamolle.html">Octamolle</a>
+      <a href="szkolenia.html">Szkolenia</a>
+      <a href="o-firmie.html">O firmie</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="head-actions">
+      <a class="icon-btn" href="wyszukiwanie.html" aria-label="Szukaj">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 L18 18"/></svg>
+      </a>
+      <a class="icon-btn" href="moje-konto.html" aria-label="Moje konto">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="6.5" r="3.5"/><path d="M3 18 C3 13.5 17 13.5 17 18"/></svg>
+      </a>
+      <a class="icon-btn" href="koszyk.html" aria-label="Koszyk">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6 H16 L15 17 H5 Z"/><path d="M7 6 C7 2 13 2 13 6"/></svg>
+        <span class="cart-count"></span>
+      </a>
+      <a class="btn btn--solid btn--sm" href="sklep.html">Zobacz produkty</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow micro">Sklep / Zamówienie</p>
+    <h1>Dane i dostawa</h1>
+  </div>
+</section>
+
+<section class="sec-pad" style="padding-top:2.5rem;">
+  <div class="wrap">
+    <div class="co-steps" aria-hidden="true">
+      <span>1 · Koszyk</span><span class="on">2 · Dane i dostawa</span><span class="on">3 · Płatność</span><span>4 · Potwierdzenie</span>
+    </div>
+    <form class="cart-layout" action="finalizacja.html" method="get">
+      <div>
+        <div class="panel">
+          <h3 class="h-sm"><span class="s-num">1</span> Dane kontaktowe</h3>
+          <div class="form-grid">
+            <div class="field"><label for="z-imie">Imię i nazwisko</label><input type="text" id="z-imie" required></div>
+            <div class="field"><label for="z-tel">Telefon</label><input type="tel" id="z-tel" required></div>
+            <div class="field full"><label for="z-email">E-mail</label><input type="email" id="z-email" required></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3 class="h-sm"><span class="s-num">2</span> Adres dostawy</h3>
+          <div class="form-grid">
+            <div class="field full"><label for="z-ulica">Ulica i numer</label><input type="text" id="z-ulica" required></div>
+            <div class="field"><label for="z-kod">Kod pocztowy</label><input type="text" id="z-kod" required></div>
+            <div class="field"><label for="z-miasto">Miasto</label><input type="text" id="z-miasto" required></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3 class="h-sm"><span class="s-num">3</span> Dostawa</h3>
+          <div class="radio-stack" id="shipOpts">
+            <label class="radio-card"><input type="radio" name="dostawa" data-price="16" checked>
+              <span class="t">Kurier<small>1–2 dni robocze</small></span><span class="p">16 zł</span></label>
+            <label class="radio-card"><input type="radio" name="dostawa" data-price="14">
+              <span class="t">Paczkomat<small>1–2 dni robocze</small></span><span class="p">14 zł</span></label>
+            <label class="radio-card"><input type="radio" name="dostawa" data-price="0">
+              <span class="t">Odbiór osobisty<small>po umówieniu</small></span><span class="p">0 zł</span></label>
+          </div>
+        </div>
+        <div class="panel">
+          <h3 class="h-sm"><span class="s-num">4</span> Płatność</h3>
+          <div class="radio-stack">
+            <label class="radio-card"><input type="radio" name="platnosc" checked>
+              <span class="t">Płatność online<small>BLIK, szybki przelew, karta</small></span></label>
+            <label class="radio-card"><input type="radio" name="platnosc">
+              <span class="t">Przelew tradycyjny<small>realizacja po zaksięgowaniu</small></span></label>
+          </div>
+          <label class="check" style="margin-top:1.4rem;"><input type="checkbox" required> Akceptuję <a href="regulamin.html" style="color:var(--muted);">regulamin sklepu</a> i <a href="polityka-prywatnosci.html" style="color:var(--muted);">politykę prywatności</a>.</label>
+        </div>
+      </div>
+      <aside class="summary">
+        <h3 class="h-sm">Twoje zamówienie</h3>
+        <div class="sum-rows" id="coSummary"></div>
+        <button class="btn btn--solid" type="submit">Zamawiam i płacę <span class="arrow">→</span></button>
+        <a class="btn btn--ghost" href="koszyk.html">Wróć do koszyka</a>
+      </aside>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="index.html" aria-label="GFT Synergy — strona główna">
+      <img src="img/logo-light.png" alt="GFT — Esse Quam Videri" width="800" height="202">
+    </a>
+        <p class="foot-motto">Esse Quam Videri — być, a nie tylko wyglądać</p>
+        <p style="font-size:0.84rem; color:var(--muted); margin-top:0.9rem; max-width:34ch;">Sprzęt szyty lokalnie dla ludzi, którzy naprawdę go używają.</p>
+      </div>
+      <div>
+        <span class="micro micro--dim">Sklep</span>
+        <ul>
+          <li><a href="kategoria-pasy.html">Pasy</a></li>
+          <li><a href="sklep.html#ladownice">Ładownice</a></li>
+          <li><a href="sklep.html#inne">Akcesoria</a></li>
+          <li><a href="warbelt-alpha.html">Warbelt Alpha</a></li>
+          <li><a href="koszyk.html">Koszyk</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="micro micro--dim">Marka</span>
+        <ul>
+          <li><a href="octamolle.html">System Octamolle</a></li>
+          <li><a href="o-firmie.html">O firmie</a></li>
+          <li><a href="szkolenia.html">Szkolenia</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="https://milmag.pl/warbelt-alpha-pas-strzelecki-od-gft-synergy/" target="_blank" rel="noopener">MILMAG o Warbelt Alpha ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="micro micro--dim">Informacje</span>
+        <ul>
+          <li><a href="regulamin.html">Regulamin sklepu</a></li>
+          <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+          <li><a href="zwroty.html">Zwroty i wymiany</a></li>
+          <li><a href="moje-konto.html">Moje konto</a></li>
+          <li><a href="#" rel="noopener">Instagram</a> · <a href="#" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GFT Synergy. Wszystkie prawa zastrzeżone.</span>
+      <span>Produkcja: Polska · Octamolle™ — system opatentowany</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
+<script>
+(function () {
+  var box = document.getElementById('coSummary');
+  function render() {
+    var items = GFT.readCart();
+    var sum = items.reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+    var shipEl = document.querySelector('#shipOpts input:checked');
+    var ship = sum >= 500 ? 0 : (shipEl ? +shipEl.dataset.price : 0);
+    var rows = items.map(function (i) {
+      return '<div><span>' + i.qty + ' × ' + i.name + '</span><span>' + GFT.money(i.price * i.qty) + '</span></div>';
+    }).join('');
+    if (!items.length) rows = '<div><span>Koszyk jest pusty</span><span>—</span></div>';
+    box.innerHTML = rows +
+      '<div><span>Dostawa</span><span>' + (ship === 0 ? 'Gratis' : GFT.money(ship)) + '</span></div>' +
+      '<div class="total"><span>Razem</span><span>' + GFT.money(sum + ship) + '</span></div>';
+  }
+  document.getElementById('shipOpts').addEventListener('change', render);
+  render();
+})();
+</script>
+</body>
+</html>

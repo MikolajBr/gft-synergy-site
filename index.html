@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GFT SYNERGY — Pasy i ładownice z systemem Octamolle. Szyte lokalnie.</title>
+<meta name="description" content="GFT Synergy: polska marka taktyczna. Pasy, ładownice i akcesoria z opatentowanym systemem Octamolle — montaż ładownic MOLLE/PALS pod kątem, bez dodatkowych przejściówek.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <span class="micro micro--dim">Szyte lokalnie · Projektowane pod praktyczne użycie</span>
+    <span class="micro micro--dim">Opatentowany system Octamolle</span>
+    <span class="micro micro--dim">Featured in MILMAG</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="GFT Synergy — strona główna">
+      <img src="img/logo-light.png" alt="GFT — Esse Quam Videri" width="800" height="202">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">☰</button>
+    <nav class="main" id="mainnav">
+      <a href="sklep.html">Sklep</a>
+      <a href="octamolle.html">Octamolle</a>
+      <a href="szkolenia.html">Szkolenia</a>
+      <a href="o-firmie.html">O firmie</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="head-actions">
+      <a class="icon-btn" href="wyszukiwanie.html" aria-label="Szukaj">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 L18 18"/></svg>
+      </a>
+      <a class="icon-btn" href="moje-konto.html" aria-label="Moje konto">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="6.5" r="3.5"/><path d="M3 18 C3 13.5 17 13.5 17 18"/></svg>
+      </a>
+      <a class="icon-btn" href="koszyk.html" aria-label="Koszyk">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6 H16 L15 17 H5 Z"/><path d="M7 6 C7 2 13 2 13 6"/></svg>
+        <span class="cart-count"></span>
+      </a>
+      <a class="btn btn--solid btn--sm" href="sklep.html">Zobacz produkty</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO / PREZENTACJA ============ -->
+<section class="hc-stage" id="heroCinema" aria-label="Prezentacja Warbelt Alpha">
+  <video class="hc-vid" id="hcVidA" muted autoplay playsinline preload="auto" poster="img/warbelt-worn.webp">
+    <source src="img/feature-octamolle.mp4" type="video/mp4">
+  </video>
+  <video class="hc-vid" id="hcVidB" muted playsinline preload="none"></video>
+
+  <div class="hc-scrim" aria-hidden="true"></div>
+  <div class="hc-pattern" aria-hidden="true"></div>
+
+  <div class="hc-top">
+    <p class="eyebrow micro">Opatentowany system Octamolle</p>
+    <h1 class="h-xl">Pasy i ładownice<br>z systemem <em>Octamolle</em></h1>
+    <div class="hero-ctas">
+      <a class="btn btn--solid" href="sklep.html">Zobacz produkty <span class="arrow">→</span></a>
+      <a class="btn btn--ghost" href="octamolle.html">Poznaj Octamolle</a>
+    </div>
+  </div>
+
+  <div class="hc-bottom wrap">
+    <div class="hc-feature" id="hcFeatureHost"></div>
+  </div>
+
+  <nav class="hc-timeline wrap" id="hcTimeline" aria-label="Cechy Warbelt Alpha"></nav>
+</section>
+
+<!-- ============ KATEGORIE ============ -->
+<section class="sec-pad" id="kategorie">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow micro">Sklep</p>
+        <h2 class="h-lg">Kategorie produktów</h2>
+      </div>
+      <span class="sec-index">/ 01 — Katalog</span>
+    </div>
+    <div class="cat-grid">
+      <a class="cat-card reveal" href="kategoria-pasy.html">
+        <figure><img src="img/warbelt-front.webp" alt="Pas taktyczny Alpha założony na sylwetce z szelkami" loading="lazy"></figure>
+        <div class="cat-body">
+          <span class="micro micro--dim">Kategoria 01</span>
+          <h3>Pasy</h3>
+          <p>Pasy taktyczne i wewnętrzne do konfiguracji oporządzenia.</p>
+          <span class="cat-link">Przeglądaj pasy →</span>
+        </div>
+      </a>
+      <a class="cat-card reveal" href="sklep.html#ladownice">
+        <figure><img src="img/warbelt-worn.webp" alt="Ładownice pistoletowe zamontowane pod kątem na panelu Octamolle" loading="lazy"></figure>
+        <div class="cat-body">
+          <span class="micro micro--dim">Kategoria 02</span>
+          <h3>Ładownice</h3>
+          <p>Ładownice pistoletowe, karabinowe i PM z insertami.</p>
+          <span class="cat-link">Przeglądaj ładownice →</span>
+        </div>
+      </a>
+      <a class="cat-card reveal" href="sklep.html#inne">
+        <figure><img src="img/warbelt-pouch.webp" alt="Worek na odzysk zamontowany z tyłu pasa" loading="lazy"></figure>
+        <div class="cat-body">
+          <span class="micro micro--dim">Kategoria 03</span>
+          <h3>Akcesoria</h3>
+          <p>Worek na odzysk, szelki i elementy uzupełniające konfigurację.</p>
+          <span class="cat-link">Przeglądaj akcesoria →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CZYM JEST OCTAMOLLE ============ -->
+<section class="octamolle sec-pad" id="octamolle">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow micro">System / Octamolle</p>
+        <h2 class="h-lg">Czym jest Octamolle?</h2>
+        <p class="lede">Octamolle to opatentowany system montażu podobny w założeniu do MOLLE, ale zaprojektowany tak, żeby umożliwiać montaż ładownic pod kątem bez dodatkowych przejściówek.</p>
+      </div>
+      <span class="sec-index">/ 02 — System</span>
+    </div>
+    <div class="grid12">
+      <div class="octa-diagram reveal">
+        <svg viewBox="0 0 560 440" role="img" aria-labelledby="octaDiagTitle">
+          <title id="octaDiagTitle">Schemat ośmiokątnego gniazda Octamolle z zaznaczonymi kierunkami montażu co 45 stopni</title>
+          <defs>
+            <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L8 4 L0 8 z" fill="#c0aa9a"/>
+            </marker>
+          </defs>
+          <g stroke="#676568" stroke-opacity="0.18" stroke-width="1">
+            <path d="M40 70 H520 M40 150 H520 M40 230 H520 M40 310 H520 M40 390 H520"/>
+            <path d="M100 30 V410 M180 30 V410 M260 30 V410 M340 30 V410 M420 30 V410 M500 30 V410"/>
+          </g>
+          <g transform="translate(280,220)">
+            <path d="M-62 -150 H62 L150 -62 V62 L62 150 H-62 L-150 62 V-62 Z" fill="none" stroke="#676568" stroke-width="1" stroke-dasharray="4 5"/>
+            <path d="M-46 -112 H46 L112 -46 V46 L46 112 H-46 L-112 46 V-46 Z" fill="#1b1b1c" stroke="#c0aa9a" stroke-width="2"/>
+            <path d="M-30 -73 H30 L73 -30 V30 L30 73 H-30 L-73 30 V-30 Z" fill="none" stroke="#676568" stroke-width="1"/>
+            <g stroke="#c0aa9a" stroke-width="1.6" marker-end="url(#ah)">
+              <line x1="0" y1="-20" x2="0" y2="-92"/>
+              <line x1="14" y1="-14" x2="66" y2="-66"/>
+              <line x1="20" y1="0" x2="92" y2="0"/>
+              <line x1="14" y1="14" x2="66" y2="66"/>
+              <line x1="0" y1="20" x2="0" y2="92"/>
+              <line x1="-14" y1="14" x2="-66" y2="66"/>
+              <line x1="-20" y1="0" x2="-92" y2="0"/>
+              <line x1="-14" y1="-14" x2="-66" y2="-66"/>
+            </g>
+            <circle r="4" fill="#c0aa9a"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.5" fill="#a29da0">
+            <text x="40" y="52">SIATKA PALS — ROZSTAW STANDARDOWY</text>
+            <text x="352" y="132" fill="#c0aa9a">45°</text>
+            <text x="398" y="226" fill="#c0aa9a">90°</text>
+            <text x="40" y="424" fill="#676568">JEDEN SYSTEM. WIĘCEJ KĄTÓW KONFIGURACJI.</text>
+          </g>
+        </svg>
+      </div>
+      <div class="octa-copy">
+        <ol class="feature-list">
+          <li>
+            <span class="f-num">01</span>
+            <div>
+              <h4>Montaż ładownic pod kątem</h4>
+              <p>Kąt uzyskujesz bezpośrednio w panelu — bez potrzeby używania dodatkowych adapterów.</p>
+            </div>
+          </li>
+          <li>
+            <span class="f-num">02</span>
+            <div>
+              <h4>Większa swoboda konfiguracji pasa</h4>
+              <p>Osie co 45° pozwalają dopasować układ do ręki dominującej, techniki dobycia i zadania.</p>
+            </div>
+          </li>
+          <li>
+            <span class="f-num">03</span>
+            <div>
+              <h4>Bardziej naturalny dostęp do magazynków</h4>
+              <p>Ładownica ustawiona pod kątem podąża za ruchem ręki — krótsza droga, szybszy powrót na broń.</p>
+            </div>
+          </li>
+          <li>
+            <span class="f-num">04</span>
+            <div>
+              <h4>Konfiguracja pod sport, służbę i wojsko</h4>
+              <p>Ten sam pas, trzy różne profile użycia — bez wymiany elementów montażowych.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="hero-ctas" style="margin-top:2rem;">
+          <a class="btn btn--solid" href="octamolle.html">Zobacz, jak działa Octamolle <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WARBELT ALPHA ============ -->
+<section class="warbelt sec-pad" id="warbelt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow micro">Produkt główny</p>
+        <h2 class="h-lg">Warbelt Alpha — baza konfiguracji GFT Synergy</h2>
+      </div>
+      <span class="sec-index">/ 03 — Produkt</span>
+    </div>
+    <div class="grid12">
+      <div class="warbelt-visual reveal">
+        <figure class="oct oct-lg">
+          <img src="img/warbelt-layers.webp" alt="Warbelt Alpha — pas zewnętrzny i wewnętrzny, widok warstw konstrukcji" loading="lazy">
+        </figure>
+      </div>
+      <div class="warbelt-copy">
+        <p class="lede">Zestaw pasa zewnętrznego i wewnętrznego pozwala zbudować stabilne oporządzenie pod trening, zawody, pracę lub służbę. System Octamolle umożliwia montaż ładownic pod kątem, bez dodatkowych przejściówek.</p>
+        <dl class="spec-rows">
+          <div><dt>Octamolle</dt><dd>montaż ładownic pod kątem w standardzie MOLLE/PALS</dd></div>
+          <div><dt>Więcej miejsca</dt><dd>lepsze wykorzystanie powierzchni montażowej</dd></div>
+          <div><dt>Szybka konfiguracja</dt><dd>range belt → war belt w mniej niż minutę</dd></div>
+          <div><dt>Komfort</dt><dd>projektowany pod wielogodzinne noszenie</dd></div>
+        </dl>
+        <div class="hero-ctas" style="margin-top:2rem;">
+          <a class="btn btn--solid" href="warbelt-alpha.html">Karta produktu <span class="arrow">→</span></a>
+          <a class="btn btn--ghost" href="kategoria-pasy.html">Wszystkie pasy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MILMAG ============ -->
+<section class="milmag sec-pad" id="milmag">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow micro">Featured in MILMAG</p>
+        <h2 class="h-lg">Warbelt Alpha w MILMAG</h2>
+      </div>
+      <span class="sec-index">/ 04 — Prasa</span>
+    </div>
+    <div class="grid12">
+      <div class="milmag-badge reveal">
+        <div class="press-mark">
+          <div class="oct-badge" aria-hidden="true"><span>MILMAG</span></div>
+          <span class="micro micro--dim">Publikacja · 21.08.2025<br>Oporządzenie i odzież / Shooting</span>
+        </div>
+      </div>
+      <div class="milmag-body">
+        <blockquote>Warbelt Alpha został opisany w MILMAG jako pas strzelecki z systemem <em>OCTAMOLLE</em>, który pozwala montować ładownice MOLLE/PALS pod kątem i lepiej wykorzystywać powierzchnię montażową.</blockquote>
+        <cite>MILMAG opisuje też, że GFT Synergy powstało z inicjatywy byłego mundurowego, a sam pas wynika z praktycznych doświadczeń wielogodzinnego używania oporządzenia.</cite>
+        <ul class="milmag-points">
+          <li>Octamolle</li>
+          <li>Komfort noszenia</li>
+          <li>Szybka konfiguracja</li>
+        </ul>
+        <a class="btn btn--ghost" href="https://milmag.pl/warbelt-alpha-pas-strzelecki-od-gft-synergy/" target="_blank" rel="noopener">Przeczytaj artykuł <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SZYTE LOKALNIE ============ -->
+<section class="sec-pad" id="produkcja">
+  <div class="wrap">
+    <div class="grid12" style="align-items:center;">
+      <div style="grid-column: 1 / 6;">
+        <p class="eyebrow micro">Production / Local sewing</p>
+        <h2 class="h-lg">Szyte lokalnie. Projektowane pod praktyczne użycie.</h2>
+        <p class="lede" style="margin-top:1.2rem;">Produkty GFT Synergy powstają lokalnie, w małej skali, z naciskiem na kontrolę wykonania i realne zastosowanie. To sprzęt projektowany dla ludzi, którzy konfigurują oporządzenie świadomie i potrzebują rozwiązań dopasowanych do ich sposobu pracy lub treningu.</p>
+      </div>
+      <div style="grid-column: 6 / 13;" class="reveal">
+        <figure class="oct oct-lg">
+          <img src="img/warbelt-loadout.webp" alt="Pełna konfiguracja pasa Alpha rozłożona na betonie: ładownice, worek na odzysk, kabura" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DLA KOGO ============ -->
+<section class="sec-pad oct-pattern" id="uzytkownicy" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow micro">Use case / Sport, Service, Military</p>
+        <h2 class="h-lg">Dla kogo</h2>
+      </div>
+      <span class="sec-index">/ 05 — Użytkownicy</span>
+    </div>
+    <div class="users-grid">
+      <div class="user-card reveal">
+        <span class="micro">Sport</span>
+        <h3>Strzelcy sportowi</h3>
+        <p>Konfiguracja pasa pod trening, zawody i szybki dostęp do wyposażenia.</p>
+        <div class="user-hours">do 4 h<small>typowy czas na pasie</small></div>
+      </div>
+      <div class="user-card reveal">
+        <span class="micro">Służby</span>
+        <h3>Służby</h3>
+        <p>Sprzęt do codziennego treningu, pracy i konfiguracji pod konkretne zadania.</p>
+        <div class="user-hours">8–12 h<small>a bywa, że 24 h</small></div>
+      </div>
+      <div class="user-card reveal">
+        <span class="micro">Wojsko</span>
+        <h3>Wojsko</h3>
+        <p>Oporządzenie i akcesoria dla użytkowników, którzy potrzebują stabilności, modułowości i prostego montażu.</p>
+        <div class="user-hours">24 h +<small>działania ciągłe</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SZKOLENIA ============ -->
+<section class="training sec-pad" id="szkolenia">
+  <div class="wrap">
+    <div class="grid12">
+      <div class="training-copy">
+        <p class="eyebrow micro">Szkolenia</p>
+        <h2 class="h-lg">Sprzęt i szkolenia w jednym kierunku</h2>
+        <p class="lede" style="margin-top:1.2rem;">GFT Synergy rozwija nie tylko produkty, ale też zaplecze szkoleniowe. Sekcja szkoleń będzie miejscem dla osób, które chcą rozwijać umiejętności strzeleckie, pracować ze sprzętem i lepiej rozumieć konfigurację oporządzenia.</p>
+        <ul class="plain">
+          <li>Praca z pasem i konfiguracja oporządzenia</li>
+          <li>Dobór i rozmieszczenie ładownic pod kąt dobycia</li>
+          <li>Instruktorski, praktyczny charakter zajęć</li>
+        </ul>
+        <div class="hero-ctas" style="margin-top:2.2rem;">
+          <a class="btn btn--solid" href="szkolenia.html">Zapytaj o szkolenia <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="training-visual reveal">
+        <figure class="oct oct-lg">
+          <img src="img/warbelt-holster.webp" alt="Kabura i ładownice zamontowane na pasie Alpha podczas pracy na strzelnicy" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPRZĘT NA ZAMÓWIENIE ============ -->
+<section class="sec-pad" id="na-zamowienie">
+  <div class="wrap">
+    <div class="custom-band oct oct-lg oct-watermark">
+      <div>
+        <p class="eyebrow micro">Sprzęt na zamówienie</p>
+        <h2 class="h-md">Szukasz konkretnego sprzętu?</h2>
+        <p>GFT Synergy może pomóc w dobraniu lub sprowadzeniu wybranego wyposażenia na zamówienie. Oferta dystrybucyjna będzie rozwijana etapami, ale już teraz możesz skontaktować się w sprawie konkretnego zapotrzebowania.</p>
+      </div>
+      <div class="btn-col">
+        <a class="btn btn--solid" href="kontakt.html">Napisz do nas <span class="arrow">→</span></a>
+        <span class="micro micro--dim">Odpowiedź do 3 dni roboczych</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta sec-pad" style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta-copy">
+      <p class="eyebrow micro">Zacznij od pasa</p>
+      <h2 class="h-lg">Konfiguruj pas pod siebie.<br>Mniej adapterów. Więcej kontroli.</h2>
+    </div>
+    <div class="cta-act">
+      <a class="btn btn--solid" href="sklep.html">Zobacz produkty <span class="arrow">→</span></a>
+      <a class="btn btn--ghost" href="octamolle.html">Poznaj Octamolle</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="index.html" aria-label="GFT Synergy — strona główna">
+      <img src="img/logo-light.png" alt="GFT — Esse Quam Videri" width="800" height="202">
+    </a>
+        <p class="foot-motto">Esse Quam Videri — być, a nie tylko wyglądać</p>
+        <p style="font-size:0.84rem; color:var(--muted); margin-top:0.9rem; max-width:34ch;">Sprzęt szyty lokalnie dla ludzi, którzy naprawdę go używają.</p>
+      </div>
+      <div>
+        <span class="micro micro--dim">Sklep</span>
+        <ul>
+          <li><a href="kategoria-pasy.html">Pasy</a></li>
+          <li><a href="sklep.html#ladownice">Ładownice</a></li>
+          <li><a href="sklep.html#inne">Akcesoria</a></li>
+          <li><a href="warbelt-alpha.html">Warbelt Alpha</a></li>
+          <li><a href="koszyk.html">Koszyk</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="micro micro--dim">Marka</span>
+        <ul>
+          <li><a href="octamolle.html">System Octamolle</a></li>
+          <li><a href="o-firmie.html">O firmie</a></li>
+          <li><a href="szkolenia.html">Szkolenia</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="https://milmag.pl/warbelt-alpha-pas-strzelecki-od-gft-synergy/" target="_blank" rel="noopener">MILMAG o Warbelt Alpha ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="micro micro--dim">Informacje</span>
+        <ul>
+          <li><a href="regulamin.html">Regulamin sklepu</a></li>
+          <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+          <li><a href="zwroty.html">Zwroty i wymiany</a></li>
+          <li><a href="moje-konto.html">Moje konto</a></li>
+          <li><a href="#" rel="noopener">Instagram</a> · <a href="#" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GFT Synergy. Wszystkie prawa zastrzeżone.</span>
+      <span>Produkcja: Polska · Octamolle™ — system opatentowany</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

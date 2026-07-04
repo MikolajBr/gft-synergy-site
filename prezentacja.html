@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warbelt Alpha — prezentacja systemu Octamolle | GFT SYNERGY</title>
+<meta name="description" content="Pełnoekranowa prezentacja Warbelt Alpha: system Octamolle, szybka konfiguracja, komfort długiego noszenia i modułowość.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-0: #0f1011;
+  --coyote: #c0aa9a;
+  --coyote-bright: #d8c3b2;
+  --graphite: #676568;
+  --text: #ece8e4;
+  --muted: #a29da0;
+  --line: rgba(236, 232, 228, 0.22);
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  height: 100%;
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #000;
+}
+
+/* dwie warstwy wideo do miękkiego cross-fade między ujęciami */
+.stage video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.stage video.active { opacity: 1; z-index: 2; }
+
+/* przyciemnienie pod UI, mocniejsze na dole i po lewej */
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(15,16,17,0.55) 0%, rgba(15,16,17,0) 22%, rgba(15,16,17,0) 55%, rgba(15,16,17,0.85) 100%),
+    linear-gradient(90deg, rgba(15,16,17,0.5) 0%, rgba(15,16,17,0) 38%);
+}
+
+/* subtelny techniczny pattern oktagonu na całej scenie */
+.stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cpath d='M34 8 62 8 76 22 76 50 62 64 34 64 20 50 20 22Z' fill='none' stroke='%23c0aa9a' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 110px 110px;
+}
+
+.ui { position: absolute; inset: 0; z-index: 4; }
+
+/* ---------- header ---------- */
+.p-head {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1rem, 3vw, 1.8rem) clamp(1.2rem, 4vw, 3rem);
+}
+.p-logo { display: flex; align-items: center; gap: 0.7rem; }
+.p-logo img { height: 30px; width: auto; }
+.p-close {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 0.55rem 1rem;
+  background: rgba(15,16,17,0.35);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.p-close:hover { color: var(--coyote); border-color: var(--coyote); }
+
+/* ---------- eyebrow / numeracja ---------- */
+.p-eyebrow {
+  position: absolute;
+  top: clamp(4.2rem, 10vw, 6rem);
+  left: clamp(1.2rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coyote);
+}
+.p-eyebrow .oct {
+  width: 10px; height: 10px;
+  border: 1.4px solid var(--coyote);
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+  flex: none;
+}
+.p-eyebrow .n { color: var(--graphite); }
+
+/* ---------- feature copy ---------- */
+.p-copy {
+  position: absolute;
+  left: clamp(1.2rem, 4vw, 3rem);
+  bottom: clamp(6.5rem, 13vw, 8.5rem);
+  max-width: min(640px, 86vw);
+}
+.p-copy h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4.4vw, 3.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.7rem;
+}
+.p-copy h2 em { font-style: normal; color: var(--coyote); }
+.p-copy p {
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  color: var(--muted);
+  max-width: 52ch;
+}
+.p-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
+.p-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--coyote-bright);
+  border: 1px solid rgba(192, 170, 154, 0.45);
+  padding: 0.35rem 0.65rem;
+  background: rgba(15,16,17,0.4);
+}
+
+/* każdy segment ma własny blok tekstu; pokazujemy tylko aktywny */
+.p-seg { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s; pointer-events: none; }
+.p-seg.active { opacity: 1; transform: none; pointer-events: auto; }
+
+/* ---------- oś czasu (segmentowany pasek) ---------- */
+.p-timeline {
+  position: absolute;
+  left: clamp(1.2rem, 4vw, 3rem);
+  right: clamp(1.2rem, 4vw, 3rem);
+  bottom: clamp(1.4rem, 3.2vw, 2.2rem);
+  display: flex;
+  gap: 0.6rem;
+}
+.p-chapter {
+  flex: 1;
+  cursor: pointer;
+  padding: 0.6rem 0 0 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+.p-chapter .track { height: 2px; background: rgba(236,232,228,0.2); position: relative; overflow: hidden; }
+.p-chapter .fill { position: absolute; inset: 0; width: 0%; background: var(--coyote); }
+.p-chapter.done .fill { width: 100%; transition: none; }
+.p-chapter.active .fill { transition: width linear; }
+.p-chapter .lbl {
+  display: block;
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  transition: color 0.25s ease;
+}
+.p-chapter.active .lbl, .p-chapter.done .lbl { color: var(--coyote); }
+@media (max-width: 640px) {
+  .p-chapter .lbl { display: none; }
+}
+
+/* ---------- kontrolki ---------- */
+.p-controls {
+  position: absolute;
+  right: clamp(1.2rem, 4vw, 3rem);
+  bottom: clamp(6.5rem, 13vw, 8.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-end;
+}
+.p-btn {
+  width: 44px; height: 44px;
+  display: grid;
+  place-items: center;
+  background: rgba(15,16,17,0.4);
+  border: 1px solid var(--line);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
+}
+.p-btn:hover { border-color: var(--coyote); color: var(--coyote); }
+.p-btn svg { width: 18px; height: 18px; }
+
+/* ---------- ekran startowy (poster) ---------- */
+.p-start {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  background: radial-gradient(ellipse at center, rgba(30,28,26,0.55) 0%, rgba(15,16,17,0.92) 72%), var(--bg-0);
+  text-align: center;
+  padding: 2rem;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.p-start.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.p-start .p-logo2 img { height: 44px; margin-bottom: 0.4rem; }
+.p-start .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--coyote);
+}
+.p-start h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  max-width: 18ch;
+  line-height: 1.12;
+}
+.p-start p { color: var(--muted); max-width: 52ch; font-size: 0.95rem; }
+.p-play {
+  margin-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--coyote);
+  color: #17130f;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 1rem 1.8rem;
+  cursor: pointer;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  transition: background-color 0.25s ease, letter-spacing 0.25s ease;
+}
+.p-play:hover { background: var(--coyote-bright); letter-spacing: 0.2em; }
+.p-play .ico { transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); }
+.p-play:hover .ico { transform: translateX(5px); }
+
+.p-fallback-note {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--graphite);
+  letter-spacing: 0.08em;
+  max-width: 40ch;
+}
+
+/* ---------- mobile: kontrolki nad tekstem, zwolnione miejsce dla timeline ----------
+   Ten blok musi zostać ostatni w arkuszu — nadpisuje wcześniejsze reguły bazowe
+   o tej samej specyficzności (kaskada wygrywa kolejnością, nie samym @media). */
+@media (max-width: 640px) {
+  .p-copy { bottom: 7.4rem; max-width: 88vw; }
+  .p-copy h2 { font-size: 1.5rem; }
+  .p-copy p { font-size: 0.82rem; }
+  .p-tags { margin-top: 0.7rem; }
+  .p-tags span { font-size: 0.56rem; padding: 0.3rem 0.5rem; }
+  .p-controls { top: 4.6rem; bottom: auto; right: 1.2rem; flex-direction: row; gap: 0.5rem; }
+  .p-btn { width: 38px; height: 38px; }
+}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <video id="vidA" muted playsinline preload="auto"></video>
+  <video id="vidB" muted playsinline preload="none"></video>
+
+  <div class="ui">
+    <header class="p-head">
+      <a class="p-logo" href="index.html">
+        <img src="img/logo-light.png" alt="GFT Synergy">
+      </a>
+      <a class="p-close" href="warbelt-alpha.html">
+        <span>Zamknij</span> <span aria-hidden="true">✕</span>
+      </a>
+    </header>
+
+    <p class="p-eyebrow"><span class="oct" aria-hidden="true"></span><span id="eyebrowLabel">Warbelt Alpha / prezentacja</span> <span class="n" id="eyebrowCount">01 / 04</span></p>
+
+    <div id="copyHost"></div>
+
+    <div class="p-controls">
+      <button class="p-btn" id="btnMute" type="button" aria-label="Włącz / wyłącz dźwięk">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8 H6 L11 4 V16 L6 12 H3 Z"/><path id="muteX" d="M14 7 L18 13 M18 7 L14 13"/></svg>
+      </button>
+      <button class="p-btn" id="btnPlay" type="button" aria-label="Odtwórz / pauza">
+        <svg viewBox="0 0 20 20" fill="currentColor" id="playIcon"><path d="M6 4 L16 10 L6 16 Z"/></svg>
+      </button>
+      <button class="p-btn" id="btnFull" type="button" aria-label="Pełny ekran">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3 H3 V7 M13 3 H17 V7 M7 17 H3 V13 M13 17 H17 V13"/></svg>
+      </button>
+    </div>
+
+    <nav class="p-timeline" id="timeline" aria-label="Rozdziały prezentacji"></nav>
+  </div>
+
+  <div class="p-start" id="startScreen">
+    <div class="p-logo2"><img src="img/logo-light.png" alt="GFT Synergy — Esse Quam Videri"></div>
+    <p class="eyebrow">Prezentacja produktu</p>
+    <h1>Warbelt Alpha. System Octamolle w ruchu.</h1>
+    <p>Cztery krótkie ujęcia: montaż pod kątem, konfiguracja w 60 sekund, komfort całodniowego noszenia i pełna modułowość loadoutu.</p>
+    <button class="p-play" id="btnStart" type="button">Odtwórz prezentację <span class="ico">→</span></button>
+    <p class="p-fallback-note">Dźwięk domyślnie wyłączony — włączysz go ikoną głośnika.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var segments = [
+    {
+      src: 'img/feature-octamolle.mp4',
+      poster: 'img/warbelt-worn.webp',
+      label: 'Warbelt Alpha / system montażu',
+      badge: 'Octamolle',
+      title: 'Montaż pod kątem. <em>Bez adaptera.</em>',
+      body: 'Ośmiokątne gniazda panelu pozwalają przepleść taśmę ładownicy pod kątem — kąt jest częścią panelu, nie dodatkową warstwą.',
+      tags: ['Octamolle', 'Angled mounting', 'No adapter needed']
+    },
+    {
+      src: 'img/feature-konfiguracja.mp4',
+      poster: 'img/warbelt-layers.webp',
+      label: 'Warbelt Alpha / konfiguracja',
+      badge: 'Szybka konfiguracja',
+      title: 'Range belt. War belt. <em>60 sekund różnicy.</em>',
+      body: 'Pas wewnętrzny i nakładka Octamolle to dwie warstwy jednego systemu — scalasz je w około minutę, bez rozbierania całego oporządzenia.',
+      tags: ['≈ 60 s', 'Range belt ↔ war belt', 'Bez narzędzi']
+    },
+    {
+      src: 'img/feature-komfort.mp4',
+      poster: 'img/warbelt-front.webp',
+      label: 'Warbelt Alpha / komfort',
+      badge: 'Komfort noszenia',
+      title: 'Projektowany na <em>godziny</em>, nie na zdjęcia.',
+      body: 'Sport do 4 h, służba 8–12 h, działania polowe jeszcze dłużej — rozkład nacisku na biodra był parametrem projektowym od pierwszego szkicu.',
+      tags: ['4 h / 12 h / 24 h+', 'Rozkład nacisku', 'Szelki odciążające']
+    },
+    {
+      src: 'img/feature-modulowosc.mp4',
+      poster: 'img/warbelt-loadout.webp',
+      label: 'Warbelt Alpha / modułowość',
+      badge: 'Pełny loadout',
+      title: 'Minimalna konstrukcja. <em>Pełny osprzęt.</em>',
+      body: 'Kabura, ładownice karabinowe i pistoletowe, worek na odzysk — w układzie, który sam wybierasz. Integracja z uprzężą alpinistyczną bez zmiany kieszeni.',
+      tags: ['Modułowość', 'Pełny loadout', 'Integracja z uprzężą']
+    }
+  ];
+
+  var stage = document.getElementById('stage');
+  var vids = [document.getElementById('vidA'), document.getElementById('vidB')];
+  var current = 0; // index into vids[] currently active
+  var seg = 0;     // index into segments[]
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timeline = document.getElementById('timeline');
+  var copyHost = document.getElementById('copyHost');
+  var eyebrowLabel = document.getElementById('eyebrowLabel');
+  var eyebrowCount = document.getElementById('eyebrowCount');
+  var muted = true;
+  var playing = false;
+  var segStart = 0;
+  var rafId = null;
+
+  // build timeline chapters
+  segments.forEach(function (s, i) {
+    var b = document.createElement('button');
+    b.className = 'p-chapter';
+    b.type = 'button';
+    b.innerHTML = '<span class="track"><span class="fill"></span></span><span class="lbl">' + s.badge + '</span>';
+    b.addEventListener('click', function () { goTo(i); });
+    timeline.appendChild(b);
+  });
+  var chapters = timeline.querySelectorAll('.p-chapter');
+
+  // build copy blocks
+  segments.forEach(function (s, i) {
+    var d = document.createElement('div');
+    d.className = 'p-copy p-seg';
+    d.innerHTML = '<h2>' + s.title + '</h2><p>' + s.body + '</p><div class="p-tags">' +
+      s.tags.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>';
+    copyHost.appendChild(d);
+  });
+  var copyBlocks = copyHost.querySelectorAll('.p-seg');
+
+  function setActiveUI(i) {
+    eyebrowLabel.textContent = segments[i].label;
+    eyebrowCount.textContent = ('0' + (i + 1)).slice(-2) + ' / 0' + segments.length;
+    copyBlocks.forEach(function (c, idx) { c.classList.toggle('active', idx === i); });
+    chapters.forEach(function (c, idx) {
+      c.classList.toggle('active', idx === i);
+      c.classList.toggle('done', idx < i);
+      var fill = c.querySelector('.fill');
+      if (idx < i) fill.style.width = '100%';
+      if (idx > i) fill.style.width = '0%';
+    });
+  }
+
+  function preload(i) {
+    var v = vids[(current + 1) % 2];
+    v.src = segments[i].src;
+    v.poster = segments[i].poster;
+    v.load();
+  }
+
+  function playSegment(i, opts) {
+    seg = i;
+    var next = (current + 1) % 2;
+    var vNext = vids[next];
+    var vPrev = vids[current];
+    if (vNext.src.indexOf(segments[i].src.split('/').pop()) === -1) {
+      vNext.src = segments[i].src;
+      vNext.poster = segments[i].poster;
+    }
+    vNext.muted = muted;
+    vNext.currentTime = 0;
+    var playPromise = vNext.play();
+    if (playPromise && playPromise.catch) playPromise.catch(function () {});
+    vNext.classList.add('active');
+    vPrev.classList.remove('active');
+    current = next;
+    setActiveUI(i);
+    segStart = performance.now();
+    if (!opts || !opts.silent) tickProgress();
+    // prefetch the following segment
+    var nextIdx = (i + 1) % segments.length;
+    var vFuture = vids[(current + 1) % 2];
+    vFuture.src = segments[nextIdx].src;
+    vFuture.poster = segments[nextIdx].poster;
+    vFuture.load();
+  }
+
+  function tickProgress() {
+    cancelAnimationFrame(rafId);
+    var v = vids[current];
+    function step() {
+      if (!playing) { rafId = requestAnimationFrame(step); return; }
+      var dur = v.duration && isFinite(v.duration) ? v.duration : 5;
+      var pct = Math.min(100, (v.currentTime / dur) * 100);
+      var fill = chapters[seg].querySelector('.fill');
+      fill.style.transitionDuration = '0s';
+      fill.style.width = pct + '%';
+      if (v.currentTime >= dur - 0.12 && dur > 0.5) {
+        var nextSeg = (seg + 1) % segments.length;
+        playSegment(nextSeg);
+        return;
+      }
+      rafId = requestAnimationFrame(step);
+    }
+    rafId = requestAnimationFrame(step);
+  }
+
+  function goTo(i) {
+    playSegment(i);
+  }
+
+  function togglePlay(force) {
+    playing = typeof force === 'boolean' ? force : !playing;
+    var v = vids[current];
+    var icon = document.getElementById('playIcon');
+    if (playing) {
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+      icon.innerHTML = '<path d="M6 4 H9 V16 H6 Z M11 4 H14 V16 H11 Z"/>';
+    } else {
+      v.pause();
+      icon.innerHTML = '<path d="M6 4 L16 10 L6 16 Z"/>';
+    }
+  }
+
+  function toggleMute() {
+    muted = !muted;
+    vids.forEach(function (v) { v.muted = muted; });
+    var xline = document.getElementById('muteX');
+    xline.style.opacity = muted ? '1' : '0';
+  }
+  document.getElementById('muteX').style.opacity = '1';
+
+  document.getElementById('btnPlay').addEventListener('click', function () { togglePlay(); });
+  document.getElementById('btnMute').addEventListener('click', toggleMute);
+  document.getElementById('btnFull').addEventListener('click', function () {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (stage.requestFullscreen) stage.requestFullscreen().catch(function () {});
+  });
+
+  document.getElementById('btnStart').addEventListener('click', function () {
+    document.getElementById('startScreen').classList.add('hidden');
+    playing = true;
+    playSegment(0);
+  });
+
+  // klawiatura: spacja = play/pause, strzałki = poprzedni/następny rozdział
+  document.addEventListener('keydown', function (e) {
+    if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
+    if (e.code === 'ArrowRight') goTo((seg + 1) % segments.length);
+    if (e.code === 'ArrowLeft') goTo((seg - 1 + segments.length) % segments.length);
+  });
+
+  // pierwsza klatka widoczna od razu (poster) zanim user kliknie "odtwórz"
+  vids[0].poster = segments[0].poster;
+  setActiveUI(0);
+
+  if (reduced) {
+    document.querySelector('.p-fallback-note').textContent = 'Wykryto ograniczone animacje — prezentacja odtwarza się bez automatycznego postępu; przełączaj rozdziały strzałką w prawo.';
+  }
+})();
+</script>
+
+</body>
+</html>
